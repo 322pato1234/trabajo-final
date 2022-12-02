@@ -1,0 +1,13 @@
+.diseño
+{
+    width: 15%;
+    border:none;
+}
+
+#borrar
+{
+    background-color: darkgray;
+    border-color: aqua;
+    border-radius: 5px;
+    width: 5vw;
+}

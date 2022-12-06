@@ -1,61 +1,61 @@
 import React from "react";
-import './AgregaContacto.css';
-import {DirectorioContext} from '../Context/DirectorioProvider'
-import Contacto from "../Contacto";
+import { DirectorioContext } from "../Context/DirectorioProvider";
+import './Agrega.css';
 
 
-function AgregaContacto(){
-   const {setModal,guardaContacto}=React.useContext(DirectorioContext);
-   const [contact,setContacxt]=React.useState({
-          nombre:'',
-          correo:'',
-          telefono:'',
-   })
 
-   function onChangeNombre(event){
-   let ContactoTemporal=contact;
-   ContactoTemporal.nombre=event.target.value;
-   setContacxt(ContactoTemporal);
+
+function AgregarContacto()
+{
+  const {setModal,guardarContacto}=React.useContext (DirectorioContext);
+  const [contact,setContact]=React.useState({
+      nombre:'',
+      correo:'',
+      telefono:''
+  })
+
+  function onchangeCorreo(event) {
+      let contactoTemporal=contact;
+      contactoTemporal.correo=event.target.value;
+      setContact(contactoTemporal);
+  };
+  function onchangeTelefono(event) {
+      let contactoTemporal=contact;
+      contactoTemporal.telefono=event.target.value;
+      setContact(contactoTemporal);
+  };
+  
+  function onchangeNombre(event) {
+      let contactoTemporal=contact;
+      contactoTemporal.nombre=event.target.value;
+      setContact(contactoTemporal);
+  };
+
+  function modalAgregar(event) {
+      event.preventDefault();
+      guardarContacto(contact);
+      setModal(false);
+  };
+
+  function modalCanselar() {
+      setModal(false);
+  };
+
+  return (
+      <div className="caja1">
+          <from className="caja">
+              <h2 className="titulo1">Agregar Contactos</h2>
+              <input placeholder="Nombre" onChange={onchangeNombre}></input>
+              <input placeholder="Telefono" onChange={onchangeTelefono}></input>
+              <input placeholder="Correro" onChange={onchangeCorreo}></input>
+              <div className="botones">
+                  <button typeof="sunmit" className="Canselar" onClick={modalCanselar}>Cancelar</button>
+                  <button className="Agregar" onClick={modalAgregar}>Guardar</button>
+              </div>
+          </from>
+      </div>
+  )
 }
 
-function onChangeCorreo(event){
-      let ContactoTemporal=contact;
-      ContactoTemporal.correo=event.target.value;
-      setContacxt(ContactoTemporal);
-}
 
-function onChangeTelefono(event){
-      let ContactoTemporal=contact;
-      ContactoTemporal.telefono=event.target.value;
-      setContacxt(ContactoTemporal);
-}
-
-function modalGuardar(event){
-   event.preventDefault();
-   guardaContacto(contact);
-   setModal(false)
-}
-
-function modalCancelar(){
-   setModal(false);
-}
-       return(
-         <div >
-            <form >
-                
-
-               <div  className="contenedor" class="blocker contenedor" id="cont"  >
-               <div className="fondo">Nuevo Contacto<br />
-               <input typeof="text" placeholder="Nombre"  class="boton2" onChange={onChangeNombre}></input><br />
-               <input typeof="text"  placeholder="Correo"   class="boton2" onChange={onChangeCorreo}></input><br />
-               <input typeof="text"placeholder="Telefono" class="boton2" onChange={onChangeTelefono}></input><br />
-               <input typeof="submit" type="button" value="Guardar" className="boton3" onClick={modalGuardar}></input>
-               <input type="button" value="Cancelar" class="cancelar" className="boton3" onClick={modalCancelar}></input>
-                         </div>
-                    </div>
-            </form>
-        </div>
-       )
-}
-
-export default AgregaContacto;
+export default AgregarContacto
